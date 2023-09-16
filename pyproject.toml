@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "screen_swap"
+description = "Change screen configuration."
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.ruff]
+select = ["ALL"]
+ignore = ['D10', 'S603', 'ANN']
+
+unfixable = []
