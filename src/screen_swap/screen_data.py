@@ -4,10 +4,13 @@ import json
 import logging
 import shlex
 from subprocess import run
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
+
+from screen_swap.screen_doctor_output import MainOutput
 
 if TYPE_CHECKING:
-    from screen_swap.screen_doctor_output import MainOutput
+    from collections.abc import Iterator
+
 
 logger = logging.getLogger(__name__)
 
@@ -20,13 +23,13 @@ class ScreenData:
 
     ALL_CONFIGURATIONS = ("full", "table", "small")
 
-    def __init__(self, json_data: MainOutput = None) -> None:
+    def __init__(self, json_data: MainOutput | None = None) -> None:
         if json_data is None:
             json_data = self.load_from_current_configuration()
         self.json_data = json_data
 
     @classmethod
-    def load_from_current_configuration(cls):
+    def load_from_current_configuration(cls) -> MainOutput:
         result = run(
             ["/usr/bin/kscreen-doctor", "-j"],
             capture_output=True,
@@ -38,9 +41,9 @@ class ScreenData:
             logging.getLogger(f"{__name__}.kscreen-doctor").error(err_msg)
         result.check_returncode()
 
-        return json.loads(result.stdout)
+        return cast(MainOutput, json.loads(result.stdout))
 
-    def gen_screen_configuration(self, conf_name: str):
+    def gen_screen_configuration(self, conf_name: str) -> Iterator[str]:
         match conf_name:
             case "full":
                 yield f"output.{self.LEFT}.enable"

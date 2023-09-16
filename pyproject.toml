@@ -10,6 +10,11 @@ dependencies = []
 
 [tool.ruff]
 select = ["ALL"]
-ignore = ['D10', 'S603', 'ANN']
+ignore = [
+    "D10", # everything should have docstrings
+    "S603", # subprocess-without-shell-equals-true
+    "ANN101", # Missing type annotation for `self` in method
+    "ANN102", # Missing type annotation for `cls` in classmethod
+]
 
 unfixable = []

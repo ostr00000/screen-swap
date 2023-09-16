@@ -9,7 +9,7 @@ from screen_swap.screen_data import ScreenData
 logger = logging.getLogger(__name__)
 
 
-def main():
+def main() -> None:
     try:
         conf_name = sys.argv[1]
     except IndexError:
