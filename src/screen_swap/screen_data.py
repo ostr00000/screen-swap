@@ -17,11 +17,11 @@ logger = logging.getLogger(__name__)
 
 class ScreenData:
     # kscreen-doctor -o
-    LEFT = "HDMI-A-5"
-    RIGHT = "DP-3"
-    SMALL = "DP-4"
+    LEFT = "HDMI-A-0"
+    RIGHT = "DisplayPort-0"
+    SMALL = "DisplayPort-1"
 
-    ALL_CONFIGURATIONS = ("full", "table", "small")
+    ALL_CONFIGURATIONS = ("full", "table", "small", "left", "right")
 
     def __init__(self, json_data: MainOutput | None = None) -> None:
         if json_data is None:
@@ -80,6 +80,26 @@ class ScreenData:
                 yield f"output.{self.SMALL}.primary"
                 yield f"output.{self.SMALL}.position.0,0"
                 yield f"output.{self.SMALL}.mode.1280x1024@75"
+
+            case "left":
+                yield f"output.{self.LEFT}.enable"
+                yield f"output.{self.LEFT}.primary"
+                yield f"output.{self.LEFT}.position.0,0"
+                yield f"output.{self.LEFT}.mode.2560x1440@60"
+                #
+                yield f"output.{self.RIGHT}.disable"
+                #
+                yield f"output.{self.SMALL}.disable"
+
+            case "right":
+                yield f"output.{self.LEFT}.disable"
+                #
+                yield f"output.{self.RIGHT}.enable"
+                yield f"output.{self.RIGHT}.primary"
+                yield f"output.{self.RIGHT}.position.0,0"
+                yield f"output.{self.RIGHT}.mode.2560x1440@60"
+                #
+                yield f"output.{self.SMALL}.disable"
 
             case _:
                 msg = "Unknown configuration"
