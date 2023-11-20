@@ -23,3 +23,6 @@ repos:
       - id: mypy
         exclude: ^tests/
         args: [--strict]
+
+ci:
+    autoupdate_schedule: quarterly
