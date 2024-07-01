@@ -13,3 +13,6 @@ install_editable:
 
 uninstall_editable:
 	${PYTHON} -m pip uninstall -y screen_swap
+
+pre_commit_autoupdate:
+	${PYTHON} -m pre_commit autoupdate

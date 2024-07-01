@@ -15,7 +15,7 @@ screen_swap = "screen_swap.__main__:main"
 [tool.setuptools-git-versioning]
 enabled = true
 
-[tool.ruff]
+[tool.ruff.lint]
 select = ["ALL"]
 ignore = [
     "D10", # everything should have docstrings
@@ -23,5 +23,12 @@ ignore = [
     "ANN101", # Missing type annotation for `self` in method
     "ANN102", # Missing type annotation for `cls` in classmethod
 ]
-
 unfixable = []
+
+
+[tool.vulture]
+# ignore_names = []
+make_whitelist = true
+min_confidence = 80
+paths = ["src"]
+sort_by_size = true
