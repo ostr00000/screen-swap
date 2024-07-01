@@ -50,11 +50,9 @@ class ScreenData:
                 yield f"output.{self.LEFT}.primary"
                 yield f"output.{self.LEFT}.position.0,0"
                 yield f"output.{self.LEFT}.mode.2560x1440@144"
-                #
                 yield f"output.{self.RIGHT}.enable"
                 yield f"output.{self.RIGHT}.position.2560,0"
                 yield f"output.{self.RIGHT}.mode.2560x1440@120"
-                #
                 yield f"output.{self.SMALL}.enable"
                 yield f"output.{self.SMALL}.position.5120,0"
                 yield f"output.{self.SMALL}.mode.1280x1024@75"
@@ -64,18 +62,14 @@ class ScreenData:
                 yield f"output.{self.LEFT}.primary"
                 yield f"output.{self.LEFT}.position.0,0"
                 yield f"output.{self.LEFT}.mode.2560x1440@144"
-                #
                 yield f"output.{self.RIGHT}.enable"
                 yield f"output.{self.RIGHT}.position.2560,0"
                 yield f"output.{self.RIGHT}.mode.2560x1440@120"
-                #
                 yield f"output.{self.SMALL}.disable"
 
             case "small":
                 yield f"output.{self.LEFT}.disable"
-                #
                 yield f"output.{self.RIGHT}.disable"
-                #
                 yield f"output.{self.SMALL}.enable"
                 yield f"output.{self.SMALL}.primary"
                 yield f"output.{self.SMALL}.position.0,0"
@@ -86,19 +80,15 @@ class ScreenData:
                 yield f"output.{self.LEFT}.primary"
                 yield f"output.{self.LEFT}.position.0,0"
                 yield f"output.{self.LEFT}.mode.2560x1440@60"
-                #
                 yield f"output.{self.RIGHT}.disable"
-                #
                 yield f"output.{self.SMALL}.disable"
 
             case "right":
                 yield f"output.{self.LEFT}.disable"
-                #
                 yield f"output.{self.RIGHT}.enable"
                 yield f"output.{self.RIGHT}.primary"
                 yield f"output.{self.RIGHT}.position.0,0"
                 yield f"output.{self.RIGHT}.mode.2560x1440@60"
-                #
                 yield f"output.{self.SMALL}.disable"
 
             case _:
