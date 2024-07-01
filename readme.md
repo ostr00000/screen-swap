@@ -1,4 +1,3 @@
-
 # Screen swap
 
 Program change screen configuration in KDE using `kscreen-doctor` program.
