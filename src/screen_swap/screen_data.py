@@ -31,9 +31,9 @@ def load_from_current_configuration() -> MainOutput:
 
 class ScreenData:
     # kscreen-doctor -o
-    LEFT = "HDMI-A-0"
-    RIGHT = "DisplayPort-0"
-    SMALL = "DisplayPort-1"
+    LEFT = "HDMI-A-5"
+    RIGHT = "DP-3"
+    SMALL = "DP-4"
 
     ALL_CONFIGURATIONS = ("full", "table", "small", "left", "right")
 
