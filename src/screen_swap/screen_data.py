@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import shlex
+from functools import cache
 from subprocess import run
 from typing import TYPE_CHECKING, cast
 
@@ -29,11 +31,21 @@ def load_from_current_configuration() -> MainOutput:
     return cast(MainOutput, json.loads(result.stdout))
 
 
+@cache
+def isWayland():
+    return bool(os.environ.get('WAYLAND_DISPLAY'))
+
+
 class ScreenData:
     # kscreen-doctor -o
-    LEFT = "HDMI-A-5"
-    RIGHT = "DP-3"
-    SMALL = "DP-4"
+    if isWayland():
+        LEFT = "HDMI-A-5"
+        RIGHT = "DP-3"
+        SMALL = "DP-4"
+    else:
+        LEFT = "HDMI-A-4"
+        RIGHT = "DisplayPort-2"
+        SMALL = "DisplayPort-3"
 
     ALL_CONFIGURATIONS = ("full", "table", "small", "left", "right")
 
