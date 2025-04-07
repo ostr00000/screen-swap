@@ -26,7 +26,7 @@ def load_from_current_configuration() -> MainOutput:
         logging.getLogger(f"{__name__}.kscreen-doctor").error(err_msg)
     result.check_returncode()
 
-    return cast(MainOutput, json.loads(result.stdout))
+    return cast("MainOutput", json.loads(result.stdout))
 
 
 class ScreenData:
