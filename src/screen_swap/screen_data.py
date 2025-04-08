@@ -6,10 +6,10 @@ import shlex
 from subprocess import run
 from typing import TYPE_CHECKING, cast
 
-from screen_swap.screen_doctor_output import MainOutput
-
 if TYPE_CHECKING:
     from collections.abc import Iterator
+
+    from screen_swap.screen_doctor_output import MainOutput
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +26,7 @@ def load_from_current_configuration() -> MainOutput:
         logging.getLogger(f"{__name__}.kscreen-doctor").error(err_msg)
     result.check_returncode()
 
-    return cast(MainOutput, json.loads(result.stdout))
+    return cast("MainOutput", json.loads(result.stdout))
 
 
 class ScreenData:
