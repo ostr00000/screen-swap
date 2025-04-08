@@ -6,10 +6,10 @@ import shlex
 from subprocess import run
 from typing import TYPE_CHECKING, cast
 
-from screen_swap.screen_doctor_output import MainOutput
-
 if TYPE_CHECKING:
     from collections.abc import Iterator
+
+    from screen_swap.screen_doctor_output import MainOutput
 
 logger = logging.getLogger(__name__)
 
