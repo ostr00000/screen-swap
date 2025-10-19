@@ -47,16 +47,19 @@ class ScreenData:
             case "full":
                 yield f"output.{self.LEFT}.enable"
                 yield f"output.{self.LEFT}.primary"
+                yield f"output.{self.SMALL}.priority.1"
                 yield f"output.{self.LEFT}.position.0,0"
                 yield f"output.{self.LEFT}.mode.2560x1440@144"
                 ##
                 yield f"output.{self.RIGHT}.enable"
+                yield f"output.{self.RIGHT}.priority.2"
                 yield f"output.{self.RIGHT}.position.2560,0"
                 yield f"output.{self.RIGHT}.mode.2560x1440@120"
                 ##
                 yield f"output.{self.SMALL}.enable"
+                yield f"output.{self.SMALL}.priority.3"
                 yield f"output.{self.SMALL}.position.5120,0"
-                yield f"output.{self.SMALL}.mode.1280x1024@75"
+                yield f"output.{self.SMALL}.mode.1440x900@60"
 
             case "table":
                 yield f"output.{self.LEFT}.enable"
@@ -78,7 +81,7 @@ class ScreenData:
                 yield f"output.{self.SMALL}.enable"
                 yield f"output.{self.SMALL}.primary"
                 yield f"output.{self.SMALL}.position.0,0"
-                yield f"output.{self.SMALL}.mode.1280x1024@75"
+                yield f"output.{self.SMALL}.mode.1440x900@60"
 
             case "left":
                 yield f"output.{self.LEFT}.enable"
