@@ -3,7 +3,8 @@ from __future__ import annotations
 import json
 import logging
 import shlex
-from subprocess import run
+from subprocess import run, check_call
+from time import sleep
 from typing import TYPE_CHECKING, cast
 
 if TYPE_CHECKING:
@@ -108,8 +109,15 @@ class ScreenData:
                 raise ValueError(msg)
 
     def set_configuration(self, conf_name: str) -> None:
-        conf = self.gen_screen_configuration(conf_name)
+        conf = list(self.gen_screen_configuration(conf_name))
+        primary = next((conf.pop(i) for i, c in enumerate(conf) if '.primary' in c), None)
+
         args = ["kscreen-doctor", *conf]
         logger.info("Running: %s", shlex.join(args))
-        result = run(args, check=True)
-        result.check_returncode()
+        check_call(args)
+
+        if primary:
+            sleep(1)
+            args = ["kscreen-doctor", primary]
+            logger.info("Running: %s", shlex.join(args))
+            check_call(args)
