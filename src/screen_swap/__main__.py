@@ -4,6 +4,7 @@ from __future__ import annotations
 import logging
 import sys
 
+from screen_swap.nigh_light import night_light_trigger_reload
 from screen_swap.screen_data import ScreenData
 from screen_swap.sound import change_sound_output
 
@@ -18,6 +19,7 @@ def main() -> None:
     else:
         ScreenData().set_configuration(conf_name)
         change_sound_output(conf_name)
+        night_light_trigger_reload()
         logger.info("Finished successfully")
 
 
