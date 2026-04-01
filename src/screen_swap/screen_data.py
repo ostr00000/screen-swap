@@ -48,7 +48,7 @@ class ScreenData:
             case "full":
                 yield f"output.{self.LEFT}.enable"
                 yield f"output.{self.LEFT}.primary"
-                yield f"output.{self.SMALL}.priority.1"
+                yield f"output.{self.LEFT}.priority.1"
                 yield f"output.{self.LEFT}.position.0,0"
                 yield f"output.{self.LEFT}.mode.2560x1440@144"
                 ##
