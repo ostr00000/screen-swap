@@ -111,7 +111,8 @@ class ScreenData:
     def set_configuration(self, conf_name: str) -> None:
         conf = list(self.gen_screen_configuration(conf_name))
         primary = next(
-            (conf.pop(i) for i, c in enumerate(conf) if ".primary" in c), None
+            (conf.pop(i) for i, c in enumerate(conf) if ".primary" in c),
+            None,
         )
 
         args = ["kscreen-doctor", *conf]

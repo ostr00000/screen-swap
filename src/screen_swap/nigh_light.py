@@ -2,7 +2,7 @@ from subprocess import check_call
 from time import sleep
 
 
-def night_light_trigger_reload():
+def night_light_trigger_reload() -> None:
     sleep(2)
 
     base = [

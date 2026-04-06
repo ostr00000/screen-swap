@@ -19,6 +19,8 @@ enabled = true
 select = ["ALL"]
 ignore = [
     "D10", # everything should have docstrings
+    "D203", # incorrect-blank-line-before-class # SKIP conflict with D211
+    "D212", # multi-line-summary-first-line # SKIP conflict with D213
     "S603", # subprocess-without-shell-equals-true
 ]
 unfixable = []
