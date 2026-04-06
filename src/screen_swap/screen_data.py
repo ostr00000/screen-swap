@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import logging
 import shlex
-from subprocess import run, check_call
+from subprocess import check_call, run
 from time import sleep
 from typing import TYPE_CHECKING, cast
 
@@ -110,7 +110,9 @@ class ScreenData:
 
     def set_configuration(self, conf_name: str) -> None:
         conf = list(self.gen_screen_configuration(conf_name))
-        primary = next((conf.pop(i) for i, c in enumerate(conf) if '.primary' in c), None)
+        primary = next(
+            (conf.pop(i) for i, c in enumerate(conf) if ".primary" in c), None
+        )
 
         args = ["kscreen-doctor", *conf]
         logger.info("Running: %s", shlex.join(args))
