@@ -22,6 +22,8 @@ ignore = [
     "D203", # incorrect-blank-line-before-class # SKIP conflict with D211
     "D212", # multi-line-summary-first-line # SKIP conflict with D213
     "S603", # subprocess-without-shell-equals-true
+    "ANN002", # Missing type annotation for `*args`
+    "ANN003", # Missing type annotation for `**kwargs`
 ]
 unfixable = []
 
@@ -32,3 +34,6 @@ make_whitelist = true
 min_confidence = 80
 paths = ["src"]
 sort_by_size = true
+
+[tool.back]
+target-version = ["py312", "py313", "py314", "py315"]

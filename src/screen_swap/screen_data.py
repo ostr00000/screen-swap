@@ -1,40 +1,24 @@
 from __future__ import annotations
 
-import json
 import logging
-import shlex
-from subprocess import check_call, run
 from time import sleep
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING
+
+from screen_swap.doctor.call import load_from_current_configuration, run_doctor
 
 if TYPE_CHECKING:
     from collections.abc import Iterator
 
-    from screen_swap.screen_doctor_output import MainOutput
+    from screen_swap.doctor.output import MainOutput
 
 logger = logging.getLogger(__name__)
 
 
-def load_from_current_configuration() -> MainOutput:
-    result = run(
-        ["/usr/bin/kscreen-doctor", "-j"],
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    if result.stderr:
-        err_msg = result.stderr.strip()
-        logging.getLogger(f"{__name__}.kscreen-doctor").error(err_msg)
-    result.check_returncode()
-
-    return cast("MainOutput", json.loads(result.stdout))
-
-
 class ScreenData:
     # kscreen-doctor -o
-    LEFT = "HDMI-A-4"
-    RIGHT = "DisplayPort-3"
-    SMALL = "DisplayPort-4"
+    LEFT = "HDMI-A-5"
+    RIGHT = "DP-4"
+    SMALL = "DP-5"
 
     ALL_CONFIGURATIONS = ("full", "table", "small", "left", "right")
 
@@ -115,12 +99,8 @@ class ScreenData:
             None,
         )
 
-        args = ["kscreen-doctor", *conf]
-        logger.info("Running: %s", shlex.join(args))
-        check_call(args)
+        run_doctor(["kscreen-doctor", *conf])
 
         if primary:
             sleep(1)
-            args = ["kscreen-doctor", primary]
-            logger.info("Running: %s", shlex.join(args))
-            check_call(args)
+            run_doctor(["kscreen-doctor", primary])
