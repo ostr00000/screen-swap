@@ -25,5 +25,5 @@ def run_doctor(command: list[str], *args, **kwargs) -> CompletedProcess[str]:
 
 
 def load_from_current_configuration() -> MainOutput:
-    result = run_doctor(["/usr/bin/kscreen-doctor", "-j"], check=False)
+    result = run_doctor(["/usr/bin/kscreen-doctor", "-j"])
     return cast("MainOutput", json.loads(result.stdout))
