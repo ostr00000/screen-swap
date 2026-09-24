@@ -39,7 +39,7 @@ class ScreenData:
                 yield f"output.{self.RIGHT}.enable"
                 yield f"output.{self.RIGHT}.priority.2"
                 yield f"output.{self.RIGHT}.position.2560,0"
-                yield f"output.{self.RIGHT}.mode.2560x1440@120"
+                yield f"output.{self.RIGHT}.mode.2560x1440@144"
                 ##
                 yield f"output.{self.SMALL}.enable"
                 yield f"output.{self.SMALL}.priority.3"
@@ -54,7 +54,7 @@ class ScreenData:
                 ##
                 yield f"output.{self.RIGHT}.enable"
                 yield f"output.{self.RIGHT}.position.2560,0"
-                yield f"output.{self.RIGHT}.mode.2560x1440@120"
+                yield f"output.{self.RIGHT}.mode.2560x1440@144"
                 ##
                 yield f"output.{self.SMALL}.disable"
 
@@ -72,7 +72,7 @@ class ScreenData:
                 yield f"output.{self.LEFT}.enable"
                 yield f"output.{self.LEFT}.primary"
                 yield f"output.{self.LEFT}.position.0,0"
-                yield f"output.{self.LEFT}.mode.2560x1440@60"
+                yield f"output.{self.LEFT}.mode.2560x1440@144"
                 ##
                 yield f"output.{self.RIGHT}.disable"
                 ##
@@ -84,7 +84,7 @@ class ScreenData:
                 yield f"output.{self.RIGHT}.enable"
                 yield f"output.{self.RIGHT}.primary"
                 yield f"output.{self.RIGHT}.position.0,0"
-                yield f"output.{self.RIGHT}.mode.2560x1440@60"
+                yield f"output.{self.RIGHT}.mode.2560x1440@144"
                 ##
                 yield f"output.{self.SMALL}.disable"
 
