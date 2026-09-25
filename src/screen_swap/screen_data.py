@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import os
 from time import sleep
 from typing import TYPE_CHECKING
 
@@ -14,11 +15,21 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
+def is_x11_session():
+    return os.environ.get("XDG_SESSION_TYPE") == 'x11'
+
+
 class ScreenData:
+    # to detect following consts use:
     # kscreen-doctor -o
-    LEFT = "HDMI-A-5"
-    RIGHT = "DP-4"
-    SMALL = "DP-5"
+    if is_x11_session():
+        LEFT = "HDMI-A-4"
+        RIGHT = "DisplayPort-3"
+        SMALL = "DisplayPort-4"
+    else:
+        LEFT = "HDMI-A-5"
+        RIGHT = "DP-4"
+        SMALL = "DP-5"
 
     ALL_CONFIGURATIONS = ("full", "table", "small", "left", "right")
 
