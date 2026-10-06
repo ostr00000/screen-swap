@@ -24,6 +24,7 @@ ignore = [
     "S603", # subprocess-without-shell-equals-true
     "ANN002", # Missing type annotation for `*args`
     "ANN003", # Missing type annotation for `**kwargs`
+    "CPY001", # Missing copyright notice at top of file
 ]
 unfixable = []
 

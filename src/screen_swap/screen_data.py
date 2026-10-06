@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-def is_x11_session():
+def is_x11_session() -> bool:
     return os.environ.get("XDG_SESSION_TYPE") == "x11"
 
 
